@@ -9,17 +9,17 @@ app = Flask(__name__)
 coordinates_db = [
     {
         "id": 0,
-        "coordinates": [-77.60431855916977, 43.15761560347455],
+        "coordinates": [43.1566, -77.61],
         "intersection": "E Main St, East Ave and Franklin St",
         "thumbs_up": 5,
         "thumbs_down": 0,
     },
     {
         "id": 1,
-        "coordinates": [-77.60634899139404, 43.15714797334406],
+        "coordinates": [43.17, -77.6088],
         "intersection": "E Main St and Clinton Ave",
         "thumbs_up": 5,
-        "thumbs_down": 0,
+        "thumbs_down": 3,
     },
 ]
 
