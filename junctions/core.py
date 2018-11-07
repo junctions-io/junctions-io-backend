@@ -31,6 +31,12 @@ coordinate_comments = {
     1: [],
 }
 
+# ToDo - Set this header to the proper setting.
+@app.after_request
+def add_access_control_header(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
 
 @app.route("/v0/coordinates")
 def get_coordinates():
