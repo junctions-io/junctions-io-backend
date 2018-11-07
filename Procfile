@@ -1,0 +1,1 @@
+web: gunicorn junctions:app --log-file -
