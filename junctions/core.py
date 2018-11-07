@@ -8,21 +8,27 @@ app = Flask(__name__)
 # ToDo move this into a database
 coordinates_db = [
     {
-        "coordinates": "-77.60431855916977,43.15761560347455",
+        "id": 0,
+        "coordinates": [-77.60431855916977, 43.15761560347455],
         "intersection": "E Main St, East Ave and Franklin St",
+        "thumbs_up": 5,
+        "thumbs_down": 0,
     },
     {
-        "coordinates": "-77.60634899139404,43.15714797334406",
+        "id": 1,
+        "coordinates": [-77.60634899139404, 43.15714797334406],
         "intersection": "E Main St and Clinton Ave",
+        "thumbs_up": 5,
+        "thumbs_down": 0,
     },
 ]
 
 coordinate_comments = {
-    "-77.60431855916977,43.15761560347455": [
+    0: [
         {"user": "skroh", "comment": "I nearly died here."},
         {"user": "skroh", "comment": "This is the intersection that started it all."},
     ],
-    "-77.60634899139404,43.15714797334406": [],
+    1: [],
 }
 
 
@@ -31,12 +37,13 @@ def get_coordinates():
     return jsonify(coordinates_db)
 
 
-@app.route("/v0/coordinate/<coordinate>/comments")
-def get_coordinate_comments(coordinate):
-    if coordinate not in coordinate_comments:
+@app.route("/v0/coordinate/<int:junction_id>/comments")
+def get_coordinate_comments(junction_id):
+    if junction_id not in coordinate_comments:
         return jsonify([]), 404
     else:
-        return jsonify(coordinate_comments[coordinate])
+        return jsonify(coordinate_comments[junction_id])
+
 
 @app.route("/")
 def hello():
